@@ -140,3 +140,5 @@ Example json body to set charge limit to Amp level:
   }
 }
 ```
+
+Note that in my case testing shows that setting a specific A value doesn't render the expected results of that exact amp value being set to the charger. Might be related to my load balancing set up or some specific misconfiguration on my side. 
