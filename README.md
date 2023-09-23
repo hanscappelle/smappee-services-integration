@@ -78,7 +78,11 @@ This renders something similar to this (again all of this is altered to hide my 
 }
 ```
 
-From above calls you'll need that `deviceSerialNumber` for the next steps. The appName in my case matched my `client_id`. And the `name` property is something I could pick myself in my app to name the chargers/locations I have in use. 
+Note that the `deviceSerialNumber` you receive in this step is the serial of your connect hub. This is different from the serial number of your actual charger that you'll need for the next steps. If you need to find the serial number of your charger the easy way is to check in the app config. 
+
+That `serviceLocationId` can be used to retrieve charging sessions for all chargers on that location (tested, not yet documented here).  
+
+The appName in my case matched my `client_id`. And the `name` property is something I could pick myself in my app to name the chargers/locations I have in use.
 
 ### Setting charge speed
 
@@ -109,6 +113,14 @@ First of all we can set the charge mode to one of `NORMAL`, `SMART` or `PAUSED`.
 
 Note that if you put the charger in `PAUSED` it will only remain paused as long as the connector remains plugged in. If you unplug the connector and plug it in again it will go back to `NORMAL` in my experience. 
 
+Example json body request to PAUSE the current charge session:
+
+```
+{
+  "mode": "PAUSE"
+}
+```
+
 #### Charge speed
 
 Charge speed can be controlled either by a limit in `PERCENTAGE` or a limit on `AMPERE`. 
@@ -117,3 +129,14 @@ If you use the `PRECENTAGE` option it will charge at that percentage of the max 
 
 This setting remains between charges. 
 
+Example json body to set charge limit to Amp level:
+
+```
+{
+  "mode": "NORMAL",
+  "limit": {
+    "unit": "AMPERE",
+    "value": 10
+  }
+}
+```
