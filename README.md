@@ -8,6 +8,8 @@ The goal of this integration is to build on top of that to provide services also
 
 ## Technical documentation
 
+Info on creating your own Home Assistant integrations https://developers.home-assistant.io/docs/creating_component_index
+
 I'll start by posting some of the API snippets that I'll need to accomplish above scenario. You can find all smappee public API documentation at https://smappee.atlassian.net/wiki/spaces/DEVAPI/overview
 
 Including instructions on how to get your personal api access. 
