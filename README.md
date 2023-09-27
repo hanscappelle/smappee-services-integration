@@ -144,3 +144,15 @@ Example json body to set charge limit to Amp level:
 ```
 
 Note that in my case testing shows that setting a specific A value doesn't render the expected results of that exact amp value being set to the charger. Might be related to my load balancing set up or some specific misconfiguration on my side. 
+
+## Implementation
+
+We do know the consumption using the P1 port. This can be used to check for an excess of electricity when the value is negative. 
+
+We also know solar production though this isn't very important here since we could have other devices using that consumption, better to work with P1 readings so we really change the charge speed based on what is not used (P1 value negative). 
+
+Challenge here is I can't seem to find a way to get the current percentage or ampere setting of the charger using their API. I have yet to check the app (where it is available) to find out how they receive it. Cause that would help a lot with keeping this implementation generic. 
+
+If it's not available I'll have to set it to 0% whenever the python service is executed and then work from there? Increase it gradually (in steps of 5%) as long as the P1 reading remains negative. This means we have to keep state and reset charger when state is lost. This also means that a value set from elsewhere will be ignored. 
+
+When we do have the current % set we can simply update to current % -/+ 5% based on P1 readings to keep it in some range. 
