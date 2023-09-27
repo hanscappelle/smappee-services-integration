@@ -1,0 +1,16 @@
+{
+  "domain": "smappee_services",
+  "name": "smappee services",
+  "version": "0.1.0",
+  "codeowners": [
+    "@hanscappelle"
+  ],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://github.com/hanscappelle/smappee-services-integration",
+  "homekit": {},
+  "iot_class": "cloud_push",
+  "requirements": [],
+  "ssdp": [],
+  "zeroconf": []
+}
